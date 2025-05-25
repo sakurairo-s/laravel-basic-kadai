@@ -35,8 +35,8 @@ require __DIR__.'/auth.php';
 // web_backup.phpからの復元
 Route::get('/posts', [PostController::class, 'index']);
 
-Route::get('/posts/create', [PostController::class, 'create']);
+Route::get('/posts/create', [PostController::class, 'create'])->middleware('auth');
 
-Route::post('/posts/store', [PostController::class, 'store'])->name('posts.store');
+Route::post('/posts/store', [PostController::class, 'store'])->name('posts.store')->middleware('auth');
 
 Route::get('/posts/{id}', [PostController::class, 'show']);
